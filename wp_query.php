@@ -47,7 +47,7 @@ while ( $the_query->have_posts() ) : $the_query->the_post();
 endwhile;
 endif;
 // Reset Post Data
-wp_reset_postdata();
+wp_reset_postdata(); // note : if we are you muliple time wp_query, we need to reset post data.
 
 
 ?>
