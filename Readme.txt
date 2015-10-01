@@ -1,5 +1,4 @@
 /**
- * This Function loads the constructor
  * @access public
  * @param none
  * @return none
