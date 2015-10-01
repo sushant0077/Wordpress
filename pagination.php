@@ -4,7 +4,7 @@
 * @ Auther : Sushant shewane
 * @ Date   : 01-10-2015
 *  Below code for custom pagination.
-*  please add below code in function.php for costom pagination
+*  please add below code in function.php for custom pagination
 */
 
  function pagination($pages,$offsets='',$limit,$pageid,$url)
@@ -65,7 +65,7 @@
 * @ Auther : Sushant shewane
 * @ Date   : 01-10-2015
 *  Below code for custom pagination.
-*  please add below code in you file ro template and replace your arguments for costom pagination
+*  please add below code in you file ro template and replace your arguments for custom pagination
 */
 
 
