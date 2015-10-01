@@ -41,8 +41,8 @@ $my_query = new WP_Query( $args );
 
 //Code to show post 
 
-if ( $the_query->have_posts() ) :
-while ( $the_query->have_posts() ) : $the_query->the_post();
+if ( $my_query->have_posts() ) :
+while ( $my_query->have_posts() ) : $my_query->the_post();
   // Do Stuff
 endwhile;
 endif;
