@@ -8,7 +8,16 @@
  * @ 02-10-2015
  */
 
-
+/*--------------------------------------------------------------------------------------------------------------------------------------
+*
+* NOTE : To create meta box for posts. 
+*
+* 		 You must add below code in function.php file 
+*		 	                          OR 
+*		 create one file (ex.text.php) and include that file in your theme function.php file
+*
+*---------------------------------------------------------------------------------------------------------------------------------------
+*/
 add_action( 'add_meta_boxes', 'create_custom_meta_box' );
 
 /**
