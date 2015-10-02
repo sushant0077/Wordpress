@@ -85,6 +85,8 @@ public function create_custom_meta_box_callback( $post ) {
  * function called on save_post hook to sanitize and save the data
  */
  
+ add_action( 'save_post', 'save_meta_box_data' );
+ 
 public function save_meta_box_data( $post_id ){
 
 	// Bail if we're doing an auto save
