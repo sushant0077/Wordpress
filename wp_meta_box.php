@@ -60,12 +60,12 @@ public function create_custom_meta_box_callback( $post ) {
 	wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
 
 		echo '<div class="wrap">';
-		echo '<label for="first_meta_field">' . _e( 'First Meta Field', 'cpt_domain' ) . '</label> <br/>';
+		echo '<label for="first_meta_field">' . _e( 'First Meta Field') . '</label> <br/>';
 		echo '<input class="text" type="text" id="first_meta_field" name="first_meta_field" value="' . esc_attr( $first_meta_field ) . '"   />';
 		echo '</div>';
  
 		echo '<div class="wrap">';
-		echo '<label for="second_meta_field">' . _e( 'Second Meta Field', 'cpt_domain' ) . '</label>  <br/>';
+		echo '<label for="second_meta_field">' . _e( 'Second Meta Field') . '</label>  <br/>';
 		echo '<input class="text" type="text" id="second_meta_field" name="second_meta_field" value="' . esc_attr( $second_meta_field ) . '"   />';
 		echo '</div>';
 }
