@@ -31,41 +31,32 @@
 		    return false;
 	  	}
       
-      	jQuery.ajax({
-           type: "POST",
-           url: "<?php echo site_url(); ?>/wp-content/themes/YOUR-THEME-NAME/assets/php-captcha/php/checkCaptcha.php",
-           dataType: "text",
-           data: {
-              "code": jQuery('.chk_img').val()
-          },
-          success: function(data){
-             
-          	//alert(data);
-	       	if (data.contains('true')){
-
-	          
-	          jQuery('.chk_img').removeClass('error');
-	          jQuery('.chk_img').next('span').remove();
-
-	          jQuery('.ten').css('opacity', '1').show();
-	          jQuery('.nine').css('opacity', '0').hide();
-
-	           jQuery('.progress-count-bg h5 span').html('100<sup>%</sup>');
-	           jQuery('.step-count-number').html('<span>10 </span> of 10');
-	          
-	          chk_done = 1;
-	         
-
-	        }else{
-	           
-	          jQuery('.here_cange').attr("src","<?php echo site_url(); ?>/wp-content/themes/YOUR-THEME-NAME/assets/php-captcha/php/newCaptcha.php?rnd=" + Math.random());
-	         // return false;
-	          jQuery('.chk_img').addClass('error');
-	          jQuery('.chk_img').after( "<span class='error'>Verication code incorrect, please try again </span>" );
-	          jQuery('.chk_img').val('');                          
-	           
-	        }
-        }
+	      	jQuery.ajax({
+	           type: "POST",
+	           url: "<?php echo site_url(); ?>/wp-content/themes/YOUR-THEME-NAME/assets/php-captcha/php/checkCaptcha.php",
+	           dataType: "text",
+	           data: {
+	              "code": jQuery('.chk_img').val()
+	          },
+	          success: function(data){
+	             
+	          	//alert(data);
+		       	if (data.contains('true')){
+	
+		          
+		          alert('verified successfully..!!!')
+		         
+	
+		  	}else{
+		           
+		          jQuery('.here_cange').attr("src","<?php echo site_url(); ?>/wp-content/themes/YOUR-THEME-NAME/assets/php-captcha/php/newCaptcha.php?rnd=" + Math.random());
+		         // return false;
+		          jQuery('.chk_img').addClass('error');
+		          jQuery('.chk_img').after( "<span class='error'>Verication code incorrect, please try again </span>" );
+		          jQuery('.chk_img').val('');                          
+		           
+			}
+            }
   	});	    
 });
 
