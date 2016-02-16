@@ -14,7 +14,7 @@ add_filter( 'script_loader_src', '_remove_script_query_string', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_query_string', 15, 1 );
 
 /**
-  * This Function Add all your heder script to Footer
+  * This Function Add all your header script to Footer
   * @param query result
   * @return none
   * @Sushant Shewane
