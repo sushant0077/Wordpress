@@ -1,6 +1,6 @@
 <?php
 /**
-	* If you have custom html form and want to add catpcha use following guidlines
+	* If you have custom html form and want to add captcha use following guidlines
 	* @param query result
 	* @return none
 	* @author Sushant Shewane
