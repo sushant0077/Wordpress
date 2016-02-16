@@ -58,7 +58,7 @@
 
 	        }else{
 	           
-	          jQuery('.here_cange').attr("src","<?php echo site_url(); ?>/wp-content/themes/collegefinder/assets/php-captcha/php/newCaptcha.php?rnd=" + Math.random());
+	          jQuery('.here_cange').attr("src","<?php echo site_url(); ?>/wp-content/themes/YOUR-THEME-NAME/assets/php-captcha/php/newCaptcha.php?rnd=" + Math.random());
 	         // return false;
 	          jQuery('.chk_img').addClass('error');
 	          jQuery('.chk_img').after( "<span class='error'>Verication code incorrect, please try again </span>" );
