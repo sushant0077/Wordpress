@@ -1,5 +1,14 @@
 <?php
 /**
+  * This is for if you text content some special character use the below utf8_encode() funciton and you issue will resolve.
+  * @param query result
+  * @return none
+  * @Sushant Shewane
+ **/
+
+utf8_encode($yourText)
+ 
+/**
   * This Function Remove query strings from static resources
   * @param query result
   * @return none
