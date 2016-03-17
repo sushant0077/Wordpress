@@ -139,5 +139,28 @@ $args = array(
     
 }
 
+  /**
+  * This filter is for remove or hide the column for category listing table.
+  * @param query result
+  * @return none
+  * @author Sushant Shewane
+ **/
+ // http://shibashake.com/wordpress-theme/modify-custom-taxonomy-columns
+ // here tax-article is costom taxanomy
+ add_filter("manage_edit-tax-article_columns", 'theme_columns'); 
+ 
+function theme_columns($theme_columns) {
+    $new_columns = array(
+        'cb' => '<input type="checkbox" />',
+        'name' => __('Name'),
+        'header_icon' => '',
+//      'description' => __('Description'),
+        'slug' => __('Slug'),
+        'posts' => __('Posts')
+        );
+    return $new_columns;
+}
+
+
 
 ?>
