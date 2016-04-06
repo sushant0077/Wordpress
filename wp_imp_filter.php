@@ -161,6 +161,21 @@ function theme_columns($theme_columns) {
     return $new_columns;
 }
 
+ /**
+  * This is set what we need to display a 404....
+  * @param query result
+  * @return none
+  * @author Sushant Shewane--> if we want to redirect page to 404 page
+ **/
+
+global $wp_query;
+$wp_query->is_404 = true;
+$wp_query->is_single = false;
+$wp_query->is_page = false;
+
+include( get_query_template( '404' ) );
+exit();
+
 
 
 ?>
