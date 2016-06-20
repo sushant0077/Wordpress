@@ -176,6 +176,33 @@ $wp_query->is_page = false;
 include( get_query_template( '404' ) );
 exit();
 
+ /**
+  * This is filter is for to fliter content of post.
+  * @param query result
+  * @return none
+  * @author Sushant Shewane--> if we want to redirect page to 404 page
+  *  ref Link : http://wordpress.stackexchange.com/questions/142143/how-do-i-show-google-ads-between-post-content
+ **/
+
+add_filter( 'the_content', 'do_something_in_content' );
+ function do_something_in_content( $content ) {
+      //add condition below for content
+      if( !is_admin() ) {
+          $adds = "<p>your_ads_code</p>";
+          $explode_p_array = explode('</p>', $content );
+          $add_p_count = 1;
+
+          if( !empty( $explode_p_array ) ){
+              array_splice( $explode_p_array, $add_p_count, 0, $adds );
+              $output = '';
+              foreach( $explode_p_array as $key=>$value ){
+                  $output .= $value;
+               }
+          }
+      }
+      return $output;
+ }
+
 
 
 ?>
