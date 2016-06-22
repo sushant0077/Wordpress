@@ -180,7 +180,7 @@ exit();
   * This is filter is for to fliter content of post.
   * @param query result
   * @return none
-  * @author Sushant Shewane--> if we want to redirect page to 404 page
+  * @author Sushant Shewane
   *  ref Link : http://wordpress.stackexchange.com/questions/142143/how-do-i-show-google-ads-between-post-content
  **/
 
@@ -203,6 +203,31 @@ add_filter( 'the_content', 'do_something_in_content' );
       return $output;
  }
 
+ /**
+  * This is filter for to append custom url in XML site map
+  * @param query result
+  * @return none
+  * @author Sushant Shewane
+  *  ref Link : https://wordpress.org/support/topic/plugin-wordpress-seo-by-yoast-include-subsites-in-main-blogs-sitemap-on-multisite-network#post-3618871
+ **/
+
+function add_sitemap_custom_items(){
+	$sitemap_custom_items = '<sitemap>
+		<loc>http://www.website.com/custom-page-1/</loc>
+		<lastmod>2012-12-18T23:12:27+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>http://www.website.com/custom-page-2/</loc>
+		<lastmod>2012-12-18T23:12:27+00:00</lastmod>
+	</sitemap>
+	<sitemap>
+		<loc>http://www.website.com/custom-page-3/</loc>
+		<lastmod>2012-12-18T23:12:27+00:00</lastmod>
+	</sitemap>';
+
+	return $sitemap_custom_items;
+}
+add_filter( 'wpseo_sitemap_index', 'add_sitemap_custom_items' );
 
 
 ?>
