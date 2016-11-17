@@ -18,4 +18,18 @@ if( is_admin_bar_showing()){
    echo "</pre>";
  }//Lists all the queries executed on your page
 }
+
+/**
+* WordPress files check
+* here we can check which files are included
+* @17-11-16 By sushant Shewane
+*/
+
+$included_files = get_included_files();
+echo "<pre>";
+print_r($included_files);
+echo "</pre>";
+
+
+
 ?>
