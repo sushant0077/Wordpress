@@ -6,12 +6,11 @@
 */
 
 define('SAVEQUERIES', true); // Add this to function.php
-
-// Add this below code in Footer.php file
+?>
+<?php 
 if( is_admin_bar_showing()){ 
-    echo get_num_queries(); 
-    echo 'queries in'.timer_stop(1);
-    
+  echo get_num_queries(); ?>  <?php echo 'queries in'.timer_stop(1); 
+  
   if (current_user_can('administrator')){
    global $wpdb;
    echo "<pre>";
