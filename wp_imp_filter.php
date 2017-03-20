@@ -231,3 +231,9 @@ add_filter( 'wpseo_sitemap_index', 'add_sitemap_custom_items' );
 
 
 ?>
+
+<?php
+// New filter for Title for Content
+// By using this filter you can show limitted word of strings
+echo wp_trim_words( get_the_content(), 40, '...' );
+?>
