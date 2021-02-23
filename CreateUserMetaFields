@@ -1,0 +1,120 @@
+<?php
+#Create the Use Meta Field 
+
+add_action( 'show_user_profile', 'crf_show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'crf_show_extra_profile_fields' );
+
+function crf_show_extra_profile_fields( $user ) {
+    $google_drive_link_hl = get_the_author_meta( 'google_drive_link_hl', $user->ID );
+    $info_pdf_link_hl = get_the_author_meta( 'info_pdf_link_hl', $user->ID );
+     //$url = get_post_meta($post->ID, 'info_pdf_link_hl', true); 
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function( $ ){
+        $( '#add-row' ).on('click', function() {
+            $('#google_drive_link_hl_div').append('<br><input type="text" class="regular-text" name="google_drive_link_hl[]" value="">');
+
+            return false;
+        });
+
+        $( '.remove-row-link' ).on('click', function() {
+            $('.del-'+$(this).data('idd')).remove();
+            return false;
+        });
+        $( '.remove-pdf-row-link' ).on('click', function() {
+            $('.del-'+$(this).data('pddf')).remove();
+            return false;
+        });
+
+        
+    });
+  </script>
+  <script>
+      jQuery(document).ready( function($) {
+        jQuery('#my_upl_button').click(function() {
+          window.send_to_editor = function(html) {
+            imgurl = jQuery(html).attr('src')
+            jQuery('#info_pdf').val(imgurl);
+            jQuery('#picsrc').attr("src", imgurl);
+            $('#info_pdf_link_hl_div').append('<br><input type="text" class="regular-text" name="info_pdf_link_hl[]" value="'+imgurl+'">');
+            tb_remove();
+          }
+
+          formfield = jQuery('#info_pdf').attr('name');
+          tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true' );
+          return false;
+        }); // End on click
+      });
+      </script>
+    <h3><?php esc_html_e( 'Add/Update Customer Information', 'crf' ); ?></h3>
+
+    <table class="form-table">
+        <tr>
+            <th><label for="google_drive_link_hl"><?php esc_html_e( 'Google Drive Link', 'crf' ); ?></label></th>
+            <td>
+                
+                <div id="google_drive_link_hl_div">
+                    <?php if($google_drive_link_hl){ foreach($google_drive_link_hl as $key => $each_link){
+                        echo '<div class="del-'.$key.'"><input type="text" class="regular-text " name="google_drive_link_hl[]" value="'.$each_link.'"/><a class="remove-row-link" href="#" data-idd="'.$key.'">Remove</a></div>';
+                    } }?>
+                    <br>
+                    <input type="text" class="google_drive_link_hl regular-text" name="google_drive_link_hl[]" value=""/> 
+                </div>
+               <p><a id="add-row" class="button" href="#">Add Drive link</a></p>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="google_drive_link_hl"><?php esc_html_e( 'Info Pdf', 'crf' ); ?></label></th>
+            <td>                
+                <div id="info_pdf_link_hl_div">
+                     <?php if($info_pdf_link_hl){ foreach($info_pdf_link_hl as $key => $pdf_link){
+                        echo '<div class="del-'.$key.'"><input type="text" class="regular-text " name="google_drive_link_hl[]" value="'.$pdf_link.'"/><a class="remove-pdf-row-link" href="#" data-pddf="'.$key.'">Remove</a></div>';
+                    } }?>
+                </div>
+                <div>                    
+                    <input id="my_upl_button" type="button" value="Upload Attachment" />
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+      
+    <?php
+}
+
+add_action( 'user_profile_update_errors', 'crf_user_profile_update_errors', 10, 3 );
+function crf_user_profile_update_errors( $errors, $update, $user ) {
+    if ( ! $update ) {
+        return;
+    }
+
+    /*if ( empty( $_POST['google_drive_link_hl'] ) ) {
+        $errors->add( 'google_drive_link_hl_error', __( '<strong>ERROR</strong>: Please enter your year of birth.', 'crf' ) );
+    }
+
+    if ( ! empty( $_POST['google_drive_link_hl'] ) && intval( $_POST['google_drive_link_hl'] ) < 1900 ) {
+        $errors->add( 'google_drive_link_hl_error', __( '<strong>ERROR</strong>: You must be born after 1900.', 'crf' ) );
+    }*/
+}
+
+
+add_action( 'personal_options_update', 'crf_update_profile_fields' );
+add_action( 'edit_user_profile_update', 'crf_update_profile_fields' );
+
+function crf_update_profile_fields( $user_id ) {
+    if ( ! current_user_can( 'edit_user', $user_id ) ) {
+        return false;
+    }
+
+    if ( ! empty( $_POST['google_drive_link_hl'] )) {
+        $google_drive_link_hl = array_filter($_POST['google_drive_link_hl']); 
+        update_user_meta( $user_id, 'google_drive_link_hl', $google_drive_link_hl);
+    }
+
+    if ( ! empty( $_POST['info_pdf_link_hl'] )) {
+        $info_pdf_link_hl = array_filter($_POST['info_pdf_link_hl']); 
+        update_user_meta( $user_id, 'info_pdf_link_hl', $info_pdf_link_hl);
+    }
+
+    
+}
